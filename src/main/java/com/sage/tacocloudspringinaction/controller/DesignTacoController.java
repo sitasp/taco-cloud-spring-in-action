@@ -3,9 +3,11 @@ package com.sage.tacocloudspringinaction.controller;
 import com.sage.tacocloudspringinaction.Ingredient;
 import com.sage.tacocloudspringinaction.Ingredient.Type;
 import com.sage.tacocloudspringinaction.Taco;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,12 +54,15 @@ public class DesignTacoController {
                 .collect(Collectors.toList());
     }
 
-//    @PostMapping
-//    public String processDesign(Design design){
-//        //save the taco design...
-//        //It will be done in chapter 3
-//        log.info("Processiing design: " + design);
-//
-//        return "redirect:/orders/current";
-//    }
+    @PostMapping
+    public String processDesign(@Valid Taco design, Errors errors){
+        if(errors.hasErrors()){
+            return "design";
+        }
+        //save the taco design...
+        //It will be done in chapter 3
+        log.info("Processiing design: " + design);
+
+        return "redirect:/orders/current";
+    }
 }
