@@ -1,4 +1,4 @@
-package com.sage.tacocloudspringinaction.config;
+package com.sage.tacocloudspringinaction.web;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
