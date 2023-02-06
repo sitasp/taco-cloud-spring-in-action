@@ -1,6 +1,6 @@
 package com.sage.tacocloudspringinaction.security;
 
-import com.sage.tacocloudspringinaction.User;
+import com.sage.tacocloudspringinaction.UserP;
 import com.sage.tacocloudspringinaction.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,9 +21,9 @@ public class UserRepositoryUserDetailsService  implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        It should not return null
-        User user = userRepo.findByUsername(username);
-        if(user != null){
-            return user;
+        UserP userP = userRepo.findByUsername(username);
+        if(userP != null){
+            return userP;
         }
         throw new UsernameNotFoundException("User: '" + username + "' not found");
     }

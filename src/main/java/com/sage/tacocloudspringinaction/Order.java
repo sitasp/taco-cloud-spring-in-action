@@ -23,7 +23,7 @@ public class Order implements Serializable  {
     private Long id;
 
     @ManyToOne
-    private User user;
+    private UserP userP;
 
 //    @Column(name="placedAt")
     private Date placedAt;

@@ -1,9 +1,9 @@
 package com.sage.tacocloudspringinaction.data;
 
-import com.sage.tacocloudspringinaction.User;
+import com.sage.tacocloudspringinaction.UserP;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<UserP, Long> {
 
-    User findByUsername(String username);
+    UserP findByUsername(String username);
 }

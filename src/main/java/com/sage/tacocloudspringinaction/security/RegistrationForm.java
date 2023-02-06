@@ -1,6 +1,6 @@
 package com.sage.tacocloudspringinaction.security;
 
-import com.sage.tacocloudspringinaction.User;
+import com.sage.tacocloudspringinaction.UserP;
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -16,8 +16,8 @@ public class RegistrationForm {
     private String zip;
     private String phone;
 
-    public User toUser(PasswordEncoder passwordEncoder){
-        return new User(
+    public UserP toUser(PasswordEncoder passwordEncoder){
+        return new UserP(
                 username = username,
                 password = passwordEncoder.encode(password),
                 fullname = fullname,

@@ -1,7 +1,7 @@
 package com.sage.tacocloudspringinaction.web;
 
 import com.sage.tacocloudspringinaction.Order;
-import com.sage.tacocloudspringinaction.User;
+import com.sage.tacocloudspringinaction.UserP;
 import com.sage.tacocloudspringinaction.data.OrderRepository;
 import com.sage.tacocloudspringinaction.data.UserRepository;
 import jakarta.validation.Valid;
@@ -43,8 +43,8 @@ public class OrderController {
             return "orderForm";
         }
 
-        User user = userRepo.findByUsername(principal.getName());
-        order.setUser(user);
+        UserP userP = userRepo.findByUsername(principal.getName());
+        order.setUserP(userP);
 
         orderRepo.save(order);
         sessionStatus.setComplete();
