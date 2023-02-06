@@ -1,7 +1,9 @@
 package com.sage.tacocloudspringinaction.web;
 
 import com.sage.tacocloudspringinaction.Order;
+import com.sage.tacocloudspringinaction.User;
 import com.sage.tacocloudspringinaction.data.OrderRepository;
+import com.sage.tacocloudspringinaction.data.UserRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import java.security.Principal;
+
 @Slf4j
 @Controller
 @RequestMapping("/orders")
@@ -20,10 +24,12 @@ import org.springframework.web.bind.support.SessionStatus;
 public class OrderController {
 
     private OrderRepository orderRepo;
+    private UserRepository userRepo;
 
     @Autowired
-    public OrderController(OrderRepository orderRepo) {
+    public OrderController(OrderRepository orderRepo, UserRepository userRepo) {
         this.orderRepo = orderRepo;
+        this.userRepo=userRepo;
     }
 
     @GetMapping("/current")
@@ -32,10 +38,13 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus){
+    public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus, Principal principal){
         if(errors.hasErrors()){
             return "orderForm";
         }
+
+        User user = userRepo.findByUsername(principal.getName());
+        order.setUser(user);
 
         orderRepo.save(order);
         sessionStatus.setComplete();
