@@ -22,6 +22,9 @@ public class Order implements Serializable  {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    private UserP userP;
+
 //    @Column(name="placedAt")
     private Date placedAt;
 

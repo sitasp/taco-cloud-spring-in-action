@@ -1,10 +1,9 @@
-package com.sage.tacocloudspringinaction.controller;
+package com.sage.tacocloudspringinaction.web;
 
 import com.sage.tacocloudspringinaction.Ingredient;
 import com.sage.tacocloudspringinaction.data.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.core.convert.converter.ConverterFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

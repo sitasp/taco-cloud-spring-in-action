@@ -1,4 +1,4 @@
-package com.sage.tacocloudspringinaction.controller;
+package com.sage.tacocloudspringinaction.web;
 
 import com.sage.tacocloudspringinaction.Ingredient;
 import com.sage.tacocloudspringinaction.Ingredient.Type;
@@ -15,7 +15,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
